@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="flex flex-col h-full">
             <Header />
-            <main className="grid grid-cols-2 flex-grow">
+            <main className="grid grid-cols-2 flex-grow overflow-hidden">
                 <MarkdownEditor markdown={markdown} onChange={setMarkdown} />
                 <MarkdownPreview markdown={markdown} />
             </main>
