@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-mono: "Source Code Pro", monospace;
+}
+
+html {
+    font-family: "Source Sans 3", sans-serif;
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
