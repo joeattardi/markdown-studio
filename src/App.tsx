@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Header from './Header';
 import MarkdownEditor from './MarkdownEditor';
 import MarkdownPreview from './MarkdownPreview';
+import ViewSelector from './ViewSelector';
 
 function App() {
     const [markdown, setMarkdown] = useState<string>('# Hello World');
@@ -11,6 +12,8 @@ function App() {
     return (
         <div className="flex flex-col h-full">
             <Header view={view} setView={setView} />
+            <div className="bg-slate-100 p-2 border border-slate-300 border-b-0">
+            </div>
             <main
                 className={clsx('grid flex-grow overflow-hidden',
                     {

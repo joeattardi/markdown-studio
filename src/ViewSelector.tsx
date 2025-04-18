@@ -1,6 +1,5 @@
 import { PiPencil, PiSquareSplitHorizontal, PiEye } from 'react-icons/pi';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 type ViewSelectorProps = {
     view: 'editor' | 'split' | 'preview';
@@ -9,12 +8,13 @@ type ViewSelectorProps = {
 
 export default function ViewSelector({ view, setView }: ViewSelectorProps) {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center border border-slate-300 rounded-md">
             <Button
                 title="Edit"
                 className="rounded-r-none"
-                variant={view === 'editor' ? 'default' : 'secondary'}
+                variant={view === 'editor' ? 'default' : 'ghost'}
                 onClick={() => setView('editor')}
+                size="sm"
             >
                 <PiPencil />
             </Button>
@@ -22,16 +22,18 @@ export default function ViewSelector({ view, setView }: ViewSelectorProps) {
             <Button
                 title="Split"
                 className="rounded-none"
-                variant={view === 'split' ? 'default' : 'secondary'}
+                variant={view === 'split' ? 'default' : 'ghost'}
                 onClick={() => setView('split')}
+                size="sm"
             >
                 <PiSquareSplitHorizontal />
             </Button>
             <Button
                 title="Preview"
                 className="rounded-l-none"
-                variant={view === 'preview' ? 'default' : 'secondary'}
+                variant={view === 'preview' ? 'default' : 'ghost'}
                 onClick={() => setView('preview')}
+                size="sm"
             >
                 <PiEye />
             </Button>
