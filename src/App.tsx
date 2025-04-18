@@ -3,11 +3,11 @@ import { useState } from 'react';
 import Header from './Header';
 import MarkdownEditor from './MarkdownEditor';
 import MarkdownPreview from './MarkdownPreview';
-import ViewSelector from './ViewSelector';
+import { EditorView } from './types';
 
 function App() {
     const [markdown, setMarkdown] = useState<string>('# Hello World');
-    const [view, setView] = useState<'editor' | 'split' | 'preview'>('split');
+    const [view, setView] = useState<EditorView>('split');
 
     return (
         <div className="flex flex-col h-full">

@@ -1,9 +1,10 @@
 import { PiPencil, PiSquareSplitHorizontal, PiEye } from 'react-icons/pi';
 import { Button } from '@/components/ui/button';
+import { EditorView } from './types';
 
 type ViewSelectorProps = {
-    view: 'editor' | 'split' | 'preview';
-    setView: (view: 'editor' | 'split' | 'preview') => void;
+    view: EditorView;
+    setView: (view: EditorView) => void;
 };
 
 export default function ViewSelector({ view, setView }: ViewSelectorProps) {

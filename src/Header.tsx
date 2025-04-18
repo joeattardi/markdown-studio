@@ -1,6 +1,12 @@
+import { EditorView } from './types';
 import ViewSelector from './ViewSelector';
 
-export default function Header({ view, setView }) {
+type HeaderProps = {
+    view: EditorView;
+    setView: (view: EditorView) => void;
+}
+
+export default function Header({ view, setView }: HeaderProps) {
     return (
         <header className="bg-white text-slate-600 p-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
