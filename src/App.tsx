@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useState } from 'react';
 import Header from './Header';
 import MarkdownEditor from './MarkdownEditor';
@@ -5,13 +6,25 @@ import MarkdownPreview from './MarkdownPreview';
 
 function App() {
     const [markdown, setMarkdown] = useState<string>('# Hello World');
+    const [view, setView] = useState<'editor' | 'split' | 'preview'>('split');
 
     return (
         <div className="flex flex-col h-full">
-            <Header />
-            <main className="grid grid-cols-2 flex-grow overflow-hidden">
-                <MarkdownEditor markdown={markdown} onChange={setMarkdown} />
-                <MarkdownPreview markdown={markdown} />
+            <Header view={view} setView={setView} />
+            <main
+                className={clsx('grid flex-grow overflow-hidden',
+                    {
+                        'grid-cols-1': view === 'editor' || view === 'preview',
+                        'grid-cols-2': view === 'split'
+                    })
+                }
+            >
+                {(view === 'editor' || view === 'split') && (
+                    <MarkdownEditor markdown={markdown} onChange={setMarkdown} />
+                )}
+                {(view === 'preview' || view === 'split') && (
+                    <MarkdownPreview markdown={markdown} />
+                )}
             </main>
         </div>
     );
