@@ -9,10 +9,9 @@ type ViewSelectorProps = {
 
 export default function ViewSelector({ view, setView }: ViewSelectorProps) {
     return (
-        <div className="flex items-center border border-slate-300 rounded-md">
+        <div className="flex items-center border border-slate-300 p-1 rounded-md shadow">
             <Button
                 title="Edit"
-                className="rounded-r-none"
                 variant={view === 'editor' ? 'default' : 'ghost'}
                 onClick={() => setView('editor')}
                 size="sm"
@@ -22,7 +21,6 @@ export default function ViewSelector({ view, setView }: ViewSelectorProps) {
 
             <Button
                 title="Split"
-                className="rounded-none"
                 variant={view === 'split' ? 'default' : 'ghost'}
                 onClick={() => setView('split')}
                 size="sm"
@@ -31,7 +29,6 @@ export default function ViewSelector({ view, setView }: ViewSelectorProps) {
             </Button>
             <Button
                 title="Preview"
-                className="rounded-l-none"
                 variant={view === 'preview' ? 'default' : 'ghost'}
                 onClick={() => setView('preview')}
                 size="sm"
