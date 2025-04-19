@@ -1,10 +1,9 @@
 import Markdown from 'react-markdown';
+import useStore from './store';
 
-type MarkdownPreviewProps = {
-    markdown: string;
-}
+export default function MarkdownPreview() {
+    const markdown = useStore((state) => state.markdown);
 
-export default function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
     return (
         <div className="flex flex-col bg-slate-200 overflow-hidden">
             <div

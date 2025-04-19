@@ -1,17 +1,15 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 import Header from './Header';
 import MarkdownEditor from './MarkdownEditor';
 import MarkdownPreview from './MarkdownPreview';
-import { EditorView } from './types';
+import useStore from './store';
 
 function App() {
-    const [markdown, setMarkdown] = useState<string>('# Hello World');
-    const [view, setView] = useState<EditorView>('split');
+    const view = useStore((state) => state.view);
 
     return (
         <div className="flex flex-col h-full">
-            <Header view={view} setView={setView} />
+            <Header />
             <main
                 className={clsx('grid flex-grow overflow-hidden',
                     {
@@ -21,10 +19,10 @@ function App() {
                 }
             >
                 {(view === 'editor' || view === 'split') && (
-                    <MarkdownEditor markdown={markdown} onChange={setMarkdown} />
+                    <MarkdownEditor />
                 )}
                 {(view === 'preview' || view === 'split') && (
-                    <MarkdownPreview markdown={markdown} />
+                    <MarkdownPreview />
                 )}
             </main>
         </div>

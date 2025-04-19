@@ -1,13 +1,11 @@
 import { PiPencil, PiSquareSplitHorizontal, PiEye } from 'react-icons/pi';
 import { Button } from '@/components/ui/button';
-import { EditorView } from './types';
+import useStore from './store';
 
-type ViewSelectorProps = {
-    view: EditorView;
-    setView: (view: EditorView) => void;
-};
+export default function ViewSelector() {
+    const view = useStore((state) => state.view);
+    const setView = useStore((state) => state.setView);
 
-export default function ViewSelector({ view, setView }: ViewSelectorProps) {
     return (
         <div className="flex items-center border border-slate-300 p-1 rounded-md shadow">
             <Button
