@@ -83,7 +83,7 @@ export default function OpenFile() {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" title="Open local file">
                     <PiFolderOpen />
                 </Button>
             </DialogTrigger>
