@@ -14,6 +14,7 @@ import { PiCircleNotch, PiFileMd, PiFolderOpen, PiWarningCircle } from 'react-ic
 import useStore from '../store';
 import clsx from 'clsx';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import fm from 'front-matter';
 
 export default function OpenFile() {
     const fileRef = useRef<File | null>(null);
@@ -44,7 +45,9 @@ export default function OpenFile() {
                 if (event.target) {
                     setLoading(false);
                     setOpen(false);
-                    setMarkdown(event.target.result as string);
+                    // TODO: Present a way to edit frontmatter, or at least preserve it when saving the file
+                    const content = fm(event.target.result as string);
+                    setMarkdown(content.body as string);
                 }
             });
 
