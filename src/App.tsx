@@ -3,6 +3,7 @@ import Header from './Header';
 import MarkdownEditor from './MarkdownEditor';
 import MarkdownPreview from './MarkdownPreview';
 import useStore from './store';
+import Toolbar from './toolbar/Toolbar';
 
 function App() {
     const view = useStore((state) => state.view);
@@ -10,6 +11,7 @@ function App() {
     return (
         <div className="flex flex-col h-full">
             <Header />
+            <Toolbar />
             <main
                 className={clsx('grid flex-grow overflow-hidden',
                     {
