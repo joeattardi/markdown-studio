@@ -10,6 +10,11 @@ export const Route = createFileRoute('/')({
 function Index() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      <header className="bg-white text-slate-600 p-2 flex items-center border-b border-b-slate-600 gap-2">
+        <img src="/logo.png" alt="Typemark logo" className="w-8" />
+        <h1 className="text-xl font-semibold">Typemark</h1>
+      </header>
+
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto px-4 py-24 text-center">
         <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
