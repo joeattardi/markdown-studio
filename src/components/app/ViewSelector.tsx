@@ -1,6 +1,6 @@
 import { PiPencil, PiSquareSplitHorizontal, PiEye } from 'react-icons/pi';
 import { Button } from '@/components/ui/button';
-import useStore from './store';
+import useStore from '@/store';
 
 export default function ViewSelector() {
     const view = useStore((state) => state.view);

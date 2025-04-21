@@ -1,4 +1,4 @@
-import useStore from './store';
+import useStore from '@/store';
 
 export default function MarkdownEditor() {
     const markdown = useStore((state) => state.markdown);

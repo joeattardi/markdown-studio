@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown';
-import useStore from './store';
+import useStore from '@/store';
 
 export default function MarkdownPreview() {
     const markdown = useStore((state) => state.markdown);

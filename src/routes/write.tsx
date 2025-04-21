@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
-import Header from '../Header';
-import MarkdownEditor from '../MarkdownEditor';
-import MarkdownPreview from '../MarkdownPreview';
+import Header from '../components/app/Header';
+import MarkdownEditor from '../components/app/MarkdownEditor';
+import MarkdownPreview from '../components/app/MarkdownPreview';
+import Toolbar from '../components/app/toolbar/Toolbar';
 import useStore from '../store';
-import Toolbar from '../toolbar/Toolbar';
 
 export const Route = createFileRoute('/write')({
   component: App,

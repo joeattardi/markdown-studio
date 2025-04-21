@@ -11,7 +11,7 @@ import {
     DialogTrigger
 } from '@/components/ui/dialog';
 import { PiCircleNotch, PiFileMd, PiFolderOpen, PiWarningCircle } from 'react-icons/pi';
-import useStore from '../store';
+import useStore from '@/store';
 import clsx from 'clsx';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import fm from 'front-matter';
