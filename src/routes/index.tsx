@@ -17,9 +17,10 @@ function Index() {
 
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+        <img src="/logo.png" alt="Typemark logo" className="w-24 mx-auto mb-4" />
+        <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
           Write Markdown with Confidence
-        </h1>
+        </h2>
         <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
           A browser-based Markdown editor with live preview. Simple, fast, and private.
           Your content stays on your device.
