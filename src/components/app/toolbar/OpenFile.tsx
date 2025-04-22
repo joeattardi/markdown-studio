@@ -30,6 +30,7 @@ export default function OpenFile() {
     function resetState() {
         setError(false);
         setFileTimestamp(0);
+        setDraggingOver(false);
         fileRef.current = null;
     }
 
@@ -69,6 +70,7 @@ export default function OpenFile() {
         event.preventDefault();
         const [file] = event.dataTransfer.files;
         setFileTimestamp(file.lastModified);
+        setDraggingOver(false);
         fileRef.current = file;
     }
 
