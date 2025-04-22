@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogTrigger
 } from '@/components/ui/dialog';
-import { PiCircleNotch, PiFileMd, PiFolderOpen, PiWarningCircle } from 'react-icons/pi';
+import { PiCheckCircle, PiCircleNotch, PiFileMd, PiFolderOpen, PiWarningCircle } from 'react-icons/pi';
 import useStore from '@/store';
 import clsx from 'clsx';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -96,7 +96,6 @@ export default function OpenFile() {
                     <DialogTitle>Open Local File</DialogTitle>
                     <DialogDescription>Load a local Markdown file into Typemark.</DialogDescription>
                 </DialogHeader>
-                <div className="p-4 flex flex-col gap-4">
                     {error && (
                         <Alert variant="destructive">
                             <PiWarningCircle />
@@ -106,20 +105,22 @@ export default function OpenFile() {
                     )}
                     <label
                         className={clsx(
-                            'flex flex-col gap-2 items-center border-dashed border-2 border-slate-300 rounded-md w-full p-8',
+                            'flex flex-col gap-2 items-center border-dashed border-2 rounded-md h-48 w-full max-w-full justify-center overflow-hidden p-4',
                             {
                                 'bg-slate-100': isDraggingOver,
-                                'hover:bg-slate-50': !isDraggingOver
+                                'hover:bg-slate-50': !isDraggingOver && !fileTimestamp,
+                                'border-green-600 bg-green-50 border-solid text-green-600 shadow': fileTimestamp,
+                                'border-slate-300 border-dashed': !fileTimestamp
                             }
                         )}
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
                     >
-                        <PiFileMd className="text-slate-500" size="64" />
+                        {fileTimestamp ? <PiCheckCircle className="text-green-600" size="64" /> : <PiFileMd className="text-slate-500" size="64" />}
                         {fileTimestamp && fileRef.current?.name ? (
                             <>
-                                <div className="text-xl">{fileRef.current.name}</div>
+                                <div title={fileRef.current.name} className="text-2xl truncate max-w-full">{fileRef.current.name}</div>
                                 <div>{filesize(fileRef.current.size, { round: 0 })}</div>
                             </>
                         ) : (
@@ -134,7 +135,6 @@ export default function OpenFile() {
                             accept=".md"
                         />
                     </label>
-                </div>
                 <DialogFooter>
                     <DialogClose asChild>
                         <Button variant="secondary">Cancel</Button>
