@@ -15,26 +15,29 @@ import useStore from '@/store';
 import clsx from 'clsx';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import fm from 'front-matter';
+import { filesize } from 'filesize';
 
 export default function OpenFile() {
     const fileRef = useRef<File | null>(null);
     const [error, setError] = useState(false);
     const [open, setOpen] = useState(false);
+    const [fileTimestamp, setFileTimestamp] = useState(0);
     const [isLoading, setLoading] = useState(false);
-    const [fileSelected, setFileSelected] = useState(false);
     const [isDraggingOver, setDraggingOver] = useState(false);
+
     const setMarkdown = useStore((state) => state.setMarkdown);
 
     function resetState() {
-        setFileSelected(false);
         setError(false);
+        setFileTimestamp(0);
         fileRef.current = null;
     }
 
     function setFile(event: React.ChangeEvent<HTMLInputElement>) {
         const [file] = event.target.files || [];
         fileRef.current = file;
-        setFileSelected(true);
+        setFileTimestamp(file.lastModified);
+        setError(false);
     }
 
     function openFile() {
@@ -54,7 +57,6 @@ export default function OpenFile() {
             reader.addEventListener('error', () => {
                 setError(true);
                 setLoading(false);
-                setFileSelected(false);
                 fileRef.current = null;
             });
 
@@ -66,8 +68,8 @@ export default function OpenFile() {
     function handleDrop(event: React.DragEvent<HTMLLabelElement>) {
         event.preventDefault();
         const [file] = event.dataTransfer.files;
+        setFileTimestamp(file.lastModified);
         fileRef.current = file;
-        setFileSelected(true);
     }
 
     function handleDragOver(event: React.DragEvent<HTMLLabelElement>) {
@@ -113,8 +115,11 @@ export default function OpenFile() {
                         onDragLeave={handleDragLeave}
                     >
                         <PiFileMd className="text-slate-500" size="64" />
-                        {fileSelected && fileRef.current?.name ? (
-                            <div className="text-xl">{fileRef.current.name}</div>
+                        {fileTimestamp && fileRef.current?.name ? (
+                            <>
+                                <div className="text-xl">{fileRef.current.name}</div>
+                                <div>{filesize(fileRef.current.size, { round: 0 })}</div>
+                            </>
                         ) : (
                             <span className="text-slate-500">
                                 Drag and drop a file here or click to select
@@ -132,7 +137,7 @@ export default function OpenFile() {
                     <DialogClose asChild>
                         <Button variant="secondary">Cancel</Button>
                     </DialogClose>
-                    <Button disabled={!fileSelected || isLoading} type="button" onClick={openFile}>
+                    <Button disabled={!fileTimestamp || isLoading} type="button" onClick={openFile}>
                         {isLoading && <PiCircleNotch className="animate-spin" />}
                         Open
                     </Button>
