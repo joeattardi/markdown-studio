@@ -24,11 +24,6 @@ export default function MarkdownEditor() {
                     }
                 }}
             />
-            {/* <textarea
-                className="bg-slate-50 flex-grow border border-slate-300 font-mono p-4 outline-none resize-none"
-                value={markdown}
-                onChange={(e) => setMarkdown(e.target.value)}
-            /> */}
         </div>
     );
 }
