@@ -23,6 +23,7 @@
         "filesize": "^10.1.6",
         "front-matter": "^4.0.2",
         "lucide-react": "^0.488.0",
+        "monaco-editor": "^0.52.2",
         "picomatch": "^4.0.2",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
