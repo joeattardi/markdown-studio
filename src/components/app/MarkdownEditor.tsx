@@ -1,16 +1,34 @@
 import useStore from '@/store';
+import Editor from '@monaco-editor/react';
 
 export default function MarkdownEditor() {
     const markdown = useStore((state) => state.markdown);
     const setMarkdown = useStore((state) => state.setMarkdown);
 
+    function handleChange(value: string | undefined) {
+        setMarkdown(value ?? '');
+    }
+
     return (
         <div className="flex flex-col bg-slate-200">
-            <textarea
+            <Editor
+                height="100%"
+                width="100%"
+                defaultLanguage="markdown"
+                value={markdown}
+                onChange={handleChange}
+                options={{
+                    fontSize: 14,
+                    minimap: {
+                        enabled: false
+                    }
+                }}
+            />
+            {/* <textarea
                 className="bg-slate-50 flex-grow border border-slate-300 font-mono p-4 outline-none resize-none"
                 value={markdown}
                 onChange={(e) => setMarkdown(e.target.value)}
-            />
+            /> */}
         </div>
     );
 }
