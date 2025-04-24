@@ -19,6 +19,10 @@ code::after {
     display: none;
 }
 
+@page {
+    margin: 0;
+}
+
 @media print {
     pre code {
         white-space: pre-wrap !important;
