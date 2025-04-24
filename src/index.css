@@ -11,6 +11,14 @@
     --font-mono: "Source Code Pro", monospace;
 }
 
+code::before {
+    display: none;
+}
+
+code::after {
+    display: none;
+}
+
 html {
     font-family: "Source Sans 3", sans-serif;
     height: 100vh;
