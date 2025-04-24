@@ -10,7 +10,7 @@ export default function MarkdownEditor() {
     }
 
     return (
-        <div className="flex flex-col bg-white p-2">
+        <div className="print:hidden flex flex-col bg-white p-2 border border-slate-300">
             <Editor
                 height="100%"
                 width="100%"

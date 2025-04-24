@@ -32,7 +32,8 @@ export default function NewFile() {
                     <DialogHeader>
                         <DialogTitle>New File</DialogTitle>
                         <DialogDescription>
-                            Are you sure you want to create a new file? This will clear the current file.
+                            Are you sure you want to create a new file? This will clear the current
+                            file.
                         </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>

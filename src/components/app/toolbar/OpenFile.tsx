@@ -10,7 +10,13 @@ import {
     DialogTitle,
     DialogTrigger
 } from '@/components/ui/dialog';
-import { PiCheckCircle, PiCircleNotch, PiFileMd, PiFolderOpen, PiWarningCircle } from 'react-icons/pi';
+import {
+    PiCheckCircle,
+    PiCircleNotch,
+    PiFileMd,
+    PiFolderOpen,
+    PiWarningCircle
+} from 'react-icons/pi';
 import useStore from '@/store';
 import clsx from 'clsx';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -96,45 +102,57 @@ export default function OpenFile() {
                     <DialogTitle>Open Local File</DialogTitle>
                     <DialogDescription>Load a local Markdown file into Typemark.</DialogDescription>
                 </DialogHeader>
-                    {error && (
-                        <Alert variant="destructive">
-                            <PiWarningCircle />
-                            <AlertTitle>Error</AlertTitle>
-                            <AlertDescription>There was an error reading your Markdown file.</AlertDescription>
-                        </Alert>
+                {error && (
+                    <Alert variant="destructive">
+                        <PiWarningCircle />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            There was an error reading your Markdown file.
+                        </AlertDescription>
+                    </Alert>
+                )}
+                <label
+                    className={clsx(
+                        'flex flex-col gap-2 items-center border-dashed border-2 rounded-md h-48 w-full max-w-full justify-center overflow-hidden p-4',
+                        {
+                            'bg-slate-100': isDraggingOver,
+                            'hover:bg-slate-50': !isDraggingOver && !fileTimestamp,
+                            'border-green-600 bg-green-50 border-solid text-green-600 shadow':
+                                fileTimestamp,
+                            'border-slate-300 border-dashed': !fileTimestamp
+                        }
                     )}
-                    <label
-                        className={clsx(
-                            'flex flex-col gap-2 items-center border-dashed border-2 rounded-md h-48 w-full max-w-full justify-center overflow-hidden p-4',
-                            {
-                                'bg-slate-100': isDraggingOver,
-                                'hover:bg-slate-50': !isDraggingOver && !fileTimestamp,
-                                'border-green-600 bg-green-50 border-solid text-green-600 shadow': fileTimestamp,
-                                'border-slate-300 border-dashed': !fileTimestamp
-                            }
-                        )}
-                        onDrop={handleDrop}
-                        onDragOver={handleDragOver}
-                        onDragLeave={handleDragLeave}
-                    >
-                        {fileTimestamp ? <PiCheckCircle className="text-green-600" size="64" /> : <PiFileMd className="text-slate-500" size="64" />}
-                        {fileTimestamp && fileRef.current?.name ? (
-                            <>
-                                <div title={fileRef.current.name} className="text-2xl truncate max-w-full">{fileRef.current.name}</div>
-                                <div>{filesize(fileRef.current.size, { round: 0 })}</div>
-                            </>
-                        ) : (
-                            <span className="text-slate-500">
-                                Drag and drop a file here or click to select
-                            </span>
-                        )}
-                        <input
-                            onChange={setFile}
-                            type="file"
-                            className="opacity-0 absolute"
-                            accept=".md"
-                        />
-                    </label>
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                >
+                    {fileTimestamp ? (
+                        <PiCheckCircle className="text-green-600" size="64" />
+                    ) : (
+                        <PiFileMd className="text-slate-500" size="64" />
+                    )}
+                    {fileTimestamp && fileRef.current?.name ? (
+                        <>
+                            <div
+                                title={fileRef.current.name}
+                                className="text-2xl truncate max-w-full"
+                            >
+                                {fileRef.current.name}
+                            </div>
+                            <div>{filesize(fileRef.current.size, { round: 0 })}</div>
+                        </>
+                    ) : (
+                        <span className="text-slate-500">
+                            Drag and drop a file here or click to select
+                        </span>
+                    )}
+                    <input
+                        onChange={setFile}
+                        type="file"
+                        className="opacity-0 absolute"
+                        accept=".md"
+                    />
+                </label>
                 <DialogFooter>
                     <DialogClose asChild>
                         <Button variant="secondary">Cancel</Button>

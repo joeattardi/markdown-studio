@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --font-mono: "Source Code Pro", monospace;
+    --font-mono: 'Source Code Pro', monospace;
 }
 
 code::before {
@@ -19,8 +19,15 @@ code::after {
     display: none;
 }
 
+@media print {
+    pre code {
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+    }
+}
+
 html {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     height: 100vh;
 }
 
@@ -140,10 +147,10 @@ body {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
     }
 }

@@ -4,12 +4,12 @@ import { EditorView } from './types';
 type State = {
     view: EditorView;
     markdown: string;
-}
+};
 
 type Action = {
     setView: (view: EditorView) => void;
     setMarkdown: (markdown: string) => void;
-}
+};
 
 const useStore = create<State & Action>((set) => ({
     view: 'split',
