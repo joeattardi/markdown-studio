@@ -1,7 +1,10 @@
+import { useEditor } from '@/hooks/useEditor';
 import useStore from '@/store';
 import Editor from '@monaco-editor/react';
+import type { editor } from 'monaco-editor';
 
 export default function MarkdownEditor() {
+    const { editorRef } = useEditor();
     const markdown = useStore((state) => state.markdown);
     const setMarkdown = useStore((state) => state.setMarkdown);
 
@@ -9,9 +12,14 @@ export default function MarkdownEditor() {
         setMarkdown(value ?? '');
     }
 
+    function handleMount(editor: editor.IStandaloneCodeEditor) {
+        editorRef.current = editor;
+    }
+
     return (
         <div className="print:hidden flex flex-col bg-white p-2 border border-slate-300">
             <Editor
+                onMount={handleMount}
                 height="100%"
                 width="100%"
                 defaultLanguage="markdown"

@@ -4,11 +4,20 @@ import Header from '../components/app/Header';
 import MarkdownEditor from '../components/app/MarkdownEditor';
 import MarkdownPreview from '../components/app/MarkdownPreview';
 import Toolbar from '../components/app/toolbar/Toolbar';
+import { EditorProvider } from '../components/app/EditorProvider';
 import useStore from '../store';
 
 export const Route = createFileRoute('/write')({
-    component: App
+    component: Write
 });
+
+function Write() {
+    return (
+        <EditorProvider>
+            <App />
+        </EditorProvider>
+    );
+}
 
 function App() {
     const view = useStore((state) => state.view);

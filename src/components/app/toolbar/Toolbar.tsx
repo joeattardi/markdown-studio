@@ -1,3 +1,4 @@
+import Bold from './Bold';
 import NewFile from './NewFile';
 import OpenFile from './OpenFile';
 import Print from './Print';
