@@ -17,7 +17,7 @@ export default function MarkdownEditor() {
     }
 
     return (
-        <div className="print:hidden flex flex-col bg-white p-2 border border-slate-300">
+        <div className="print:hidden flex flex-col bg-white p-2 border border-slate-300 border-r-0">
             <Editor
                 onMount={handleMount}
                 height="100%"
