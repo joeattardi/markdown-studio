@@ -75,9 +75,11 @@ export default function OpenFile() {
     function handleDrop(event: React.DragEvent<HTMLLabelElement>) {
         event.preventDefault();
         const [file] = event.dataTransfer.files;
-        setFileTimestamp(file.lastModified);
         setDraggingOver(false);
-        fileRef.current = file;
+        if (file.type === 'text/markdown') {
+            setFileTimestamp(file.lastModified);
+            fileRef.current = file;
+        }
     }
 
     function handleDragOver(event: React.DragEvent<HTMLLabelElement>) {
