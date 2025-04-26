@@ -8,7 +8,7 @@ export default function Bold() {
     function applyBold() {
         if (editorRef.current) {
             const selection = editorRef.current?.getSelection();
-            
+
             if (selection) {
                 const selectedText = editorRef.current.getModel()?.getValueInRange(selection);
                 const newText = `**${selectedText}**`;
@@ -28,5 +28,5 @@ export default function Bold() {
         <Button size="sm" variant="outline" title="Bold" onClick={applyBold}>
             <PiTextB />
         </Button>
-    )
+    );
 }
