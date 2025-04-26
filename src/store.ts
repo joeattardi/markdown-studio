@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { EditorView } from './types';
 
 type State = {
@@ -11,11 +12,18 @@ type Action = {
     setMarkdown: (markdown: string) => void;
 };
 
-const useStore = create<State & Action>((set) => ({
-    view: 'split',
-    markdown: '',
-    setView: (view: EditorView) => set(() => ({ view })),
-    setMarkdown: (markdown: string) => set(() => ({ markdown }))
-}));
+const useStore = create<State & Action>()(
+    persist(
+        (set) => ({
+            view: 'split',
+            markdown: '',
+            setView: (view: EditorView) => set(() => ({ view })),
+            setMarkdown: (markdown: string) => set(() => ({ markdown }))
+        }),
+        {
+            name: 'typemark-storage'
+        }
+    )
+);
 
 export default useStore;
