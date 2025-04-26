@@ -32,6 +32,7 @@ export default function OpenFile() {
     const [isDraggingOver, setDraggingOver] = useState(false);
 
     const setMarkdown = useStore((state) => state.setMarkdown);
+    const setFilename = useStore((state) => state.setFilename);
 
     function resetState() {
         setError(false);
@@ -58,6 +59,7 @@ export default function OpenFile() {
                     // TODO: Present a way to edit frontmatter, or at least preserve it when saving the file
                     const content = fm(event.target.result as string);
                     setMarkdown(content.body as string);
+                    setFilename(file.name);
                 }
             });
 

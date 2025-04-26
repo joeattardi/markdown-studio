@@ -15,9 +15,11 @@ import { PiFile } from 'react-icons/pi';
 export default function NewFile() {
     const markdown = useStore((state) => state.markdown);
     const setMarkdown = useStore((state) => state.setMarkdown);
+    const setFilename = useStore((state) => state.setFilename);
 
     function createNewFile() {
         setMarkdown('');
+        setFilename('untitled.md');
     }
 
     if (markdown.length) {

@@ -25,6 +25,7 @@ function Write() {
 function App() {
     const view = useStore((state) => state.view);
     const setMarkdown = useStore((state) => state.setMarkdown);
+    const setFilename = useStore((state) => state.setFilename);
     const [draggingOver, setDraggingOver] = useState(false);
 
     function handleDrop(event: React.DragEvent<HTMLDivElement>) {
@@ -37,6 +38,7 @@ function App() {
                 if (event.target) {
                     const content = fm(event.target.result as string);
                     setMarkdown(content.body as string);
+                    setFilename(file.name);
                 }
             });
 
